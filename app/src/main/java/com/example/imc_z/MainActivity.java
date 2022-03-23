@@ -2,11 +2,13 @@ package com.example.imc_z;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,15 +28,24 @@ public class MainActivity extends AppCompatActivity {
        final Button button = (Button)findViewById(R.id.btn_calcular);
        button.setOnClickListener (new View.OnClickListener(){
            public void onClick (View v){
-               int peso = Integer.parseInt(edt_Peso.getText().toString());
-               float altura = Float.parseFloat(edt_Altura.getText().toString());
+               int peso = 0;
+              peso = Integer.parseInt(edt_Peso.getText().toString());
+               float altura = 0.0F;
+               altura=  Float.parseFloat(edt_Altura.getText().toString());
 
-               float resultado;
+               float resultado = 0.0F;
+
 
                resultado = peso / (altura * altura) * 10000;
+               if (altura == 0){
+                   txt_Result.setText("preencha os dados corretamente");
+                   
+               }
+                else if (resultado <= 0 ){
+                    txt_Result.setText("preencha os dados corretamente");
+                }
 
-
-               if(resultado <18.5){
+               else if(resultado >0 && resultado <18.5){
                    txt_Result.setText("Abaixo do peso");
 
                }else if(resultado>=25 & resultado <=29.9 ){
