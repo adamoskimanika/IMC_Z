@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();//retira a barra azul
         setContentView(R.layout.activity_main);
 
         final TextView txt_Altura = (TextView) findViewById(R.id.txt_altura);
@@ -29,19 +30,20 @@ public class MainActivity extends AppCompatActivity {
                float altura = Float.parseFloat(edt_Altura.getText().toString());
 
                float resultado;
-               float resul;
-               float alt;
-               alt = altura * altura;
-               resul = peso / alt;
-               resultado = resul * 10000;
-               
-               if(resultado <19){
+
+               resultado = peso / (altura * altura) * 10000;
+
+
+               if(resultado <18.5){
                    txt_Result.setText("Abaixo do peso");
-                   
-               }else if(resultado > 32){
-                   txt_Result.setText("Acima do peso");
-               }else{
-                   txt_Result.setText("Ok");
+
+               }else if(resultado>=25 & resultado <=29.9 ){
+                   txt_Result.setText("Peso normal");
+               }else if (resultado >= 30 && resultado <= 39.9){
+                   txt_Result.setText("Obesidade");
+               }
+               else if (resultado >40){
+                   txt_Result.setText("Obesidade Morbida");
                }
 
            }
