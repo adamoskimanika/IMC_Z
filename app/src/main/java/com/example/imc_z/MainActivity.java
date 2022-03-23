@@ -32,17 +32,18 @@ public class MainActivity extends AppCompatActivity {
               peso = Integer.parseInt(edt_Peso.getText().toString());
                float altura = 0.0F;
                altura=  Float.parseFloat(edt_Altura.getText().toString());
-
+               String txt_inc = "preencha os dados corretamente"
+;
                float resultado = 0.0F;
 
 
                resultado = peso / (altura * altura) * 10000;
                if (altura == 0){
-                   txt_Result.setText("preencha os dados corretamente");
+                   txt_Result.setText(txt_inc);
                    
                }
                 else if (resultado <= 0 ){
-                    txt_Result.setText("preencha os dados corretamente");
+                    txt_Result.setText(txt_inc);
                 }
 
                else if(resultado >0 && resultado <18.5){
